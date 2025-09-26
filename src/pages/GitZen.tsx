@@ -128,7 +128,7 @@ export const GitZen: React.FC = () => {
                   summary={codeSummary} 
                   repositoryName={extractedCode.repository.full_name} 
                 />
-                <AISummary summary={codeSummary} />
+                {/* <AISummary summary={codeSummary} /> */}
               </>
             )}
             
