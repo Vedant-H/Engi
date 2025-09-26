@@ -10,9 +10,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 # ---------------- CONFIG ---------------- #
 GIT_PATH = r"C:\Program Files\Git\cmd\git.exe"
-PYLINT_CMD = [r"C:\Users\Ishaan M Kulkarni\AppData\Roaming\Python\Scripts\pylint.exe"]
-BANDIT_CMD = [r"C:\Users\Ishaan M Kulkarni\AppData\Roaming\Python\Scripts\bandit.exe"]
-SEMgrep_CMD = [r"C:\Users\Ishaan M Kulkarni\AppData\Roaming\Python\Scripts\semgrep.exe"]
+PYLINT_CMD = [r"C:\Users\Vedant\Desktop\EngiVerse\backend\venv\Scripts\pylint.exe"]
+BANDIT_CMD = [r"C:\Users\Vedant\Desktop\EngiVerse\backend\venv\Scripts\bandit.exe"]
+SEMgrep_CMD = [r"C:\Users\Vedant\Desktop\EngiVerse\backend\venv\Scripts\semgrep.exe"]
 ESLINT_CMD = ["eslint"]
 TSC_CMD = ["tsc", "--noEmit", "--allowJs"]
 
