@@ -10,6 +10,7 @@ import ProjectReport from './pages/ProjectReport';
 import Upload from './pages/Upload';
 import Dashboard from './pages/Dashboard';
 import Mentor from './pages/Mentor';
+import GitZen from './pages/GitZen';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/mentor" element={<Mentor />} />
               <Route path="/project-report/:id" element={<ProjectReport />} />
+              <Route path="/gitzen/:id" element={<GitZen />} />
+
             </Routes>
           </main>
           <ToastProvider />

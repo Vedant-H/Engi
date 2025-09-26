@@ -17,6 +17,8 @@ import {
 import { useApp } from '../context/AppContext';
 import Modal from '../components/UI/Modal';
 import { toast } from 'react-toastify';
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const ProjectDetail: React.FC = () => {
   // 1. ALL HOOK CALLS (Must be at the very top and unconditional)
@@ -229,7 +231,18 @@ const ProjectDetail: React.FC = () => {
                   }`}
                 >
                   <Brain className="h-4 w-4" />
-                  <span className="text-sm">View Report</span>
+                  <span className="text-sm">View Project Health</span>
+                </button>
+                <button
+                  onClick={() => navigate(`/gitzen/${project.id}`)}
+                  className={`px-4 py-2 rounded-lg transition-colors flex items-center space-x-2 ${
+                    isDarkMode
+                      ? 'bg-purple-700 hover:bg-purple-600 text-white'
+                      : 'bg-purple-50 hover:bg-purple-100 text-purple-700'
+                  }`}
+                >
+                  <Brain className="h-4 w-4" />
+                  <span className="text-sm">View Project Summary</span>
                 </button>
               </div>
             </div>
@@ -480,8 +493,6 @@ const ProjectDetail: React.FC = () => {
 
 
         </div>
-      </div>
-
 {/* --- CLEAN REMOTE ANALYSIS DISPLAY --- */}
 {remoteAnalysis?.gemini_summary && (
   <div
@@ -499,31 +510,20 @@ const ProjectDetail: React.FC = () => {
     </h2>
 
     <div className={`prose max-w-none ${isDarkMode ? "prose-invert text-gray-300" : "text-gray-700"}`}>
-      {remoteAnalysis.gemini_summary
-        .split("\n\n") // split into paragraphs
-        .filter((line: string) => line.trim().length > 0)
-        .map((line: string, index: number) => {
-          // Clean Markdown symbols
-          let cleanLine = line
-            .replace(/[*`]/g, "") // remove *, ` characters
-            .replace(/^\s*-\s*/, "") // remove starting hyphens if any
-            .trim();
-
-          // Render headings differently
-          if (cleanLine.startsWith("ESLint") || cleanLine.startsWith("Pylint") || cleanLine.startsWith("tsc") || cleanLine.startsWith("Medium Risk") || cleanLine.startsWith("Low Risk") || cleanLine.startsWith("No Risk")) {
-            return (
-              <h3 key={index} className={`text-lg font-bold mt-4 mb-2 ${isDarkMode ? "text-white" : "text-gray-900"}`}>
-                {cleanLine}
-              </h3>
-            );
-          }
-
-          // Default paragraph
-          return <p key={index} className="mb-2">{cleanLine}</p>;
-        })}
+      <img
+        src="https://github.com/sarvesh8804/Netflix-Clone/blob/master/image.png?raw=true"   // put your image in the /public folder
+        alt="Analysis Summary"
+        className="rounded-lg shadow-md mb-4 w-1/2 h-1/2 mx-auto"
+      />
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {remoteAnalysis.gemini_summary}
+      </ReactMarkdown>
     </div>
   </div>
 )}
+      </div>
+
+
 {/* --- END CLEAN DISPLAY --- */}
 
 

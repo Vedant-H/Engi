@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Filter, Grid, List, SortAsc } from 'lucide-react';
 import { useApp } from '../context/AppContext';
-import ProjectCard from '../components/UI/ProjectCard';
+import NewProjectCard from '../components/UI/NewProjectCard';
 
 const Projects: React.FC = () => {
   const { projects, isDarkMode } = useApp();
@@ -226,7 +226,7 @@ const Projects: React.FC = () => {
               : 'space-y-6'
           }>
             {filteredProjects.map((project) => (
-              <ProjectCard 
+              <NewProjectCard 
                 key={project.id} 
                 project={project}
                 showAdoptButton={true}
