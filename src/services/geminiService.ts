@@ -36,7 +36,7 @@ ${truncatedContent}
     }).join('\n');
 
     return `
-Analyze this GitHub repository and provide two types of summaries:
+Analyze this GitHub repository and provide three types of summaries:
 
 1. **Technical Summary**:
 - Repository: ${repository.full_name}
@@ -60,7 +60,16 @@ Please provide a JSON response with the following structure. Do not include any 
   "gettingStarted": "Brief guide on how to get started with this project",
   "mainFiles": ["important_file1.js", "important_file2.py"],
   "complexity": "Low|Medium|High",
-  "estimatedReadingTime": "X minutes"
+  "estimatedReadingTime": "X minutes",
+  "futureScope": "Potential future improvements or extensions for this project",
+  "roadmap": [
+    { "step": "Step 1", "description": "Define the project goals and objectives." },
+    { "step": "Step 2", "description": "Set up the development environment and tools." },
+    { "step": "Step 3", "description": "Develop the core features and functionalities." },
+    { "step": "Step 4", "description": "Test and debug the application thoroughly." },
+    { "step": "Step 5", "description": "Deploy the application to the production environment." },
+    { "step": "Step 6", "description": "Gather user feedback and iterate on improvements." }
+  ]
 }
 
 2. **Non-Technical Summary**:
@@ -69,7 +78,10 @@ Please provide a JSON response with the following structure. Do not include any 
 - The key features and benefits of the project.
 - The technologies or tools used, described in simple terms.
 
-Provide the technical summary in JSON format enclosed in a Markdown code block like \`\`\`json... \`\`\`. Provide the non-technical summary in plain text.`;
+3. **Roadmap**:
+- A step-by-step plan for the project, including key milestones and objectives.
+
+Provide the technical summary in JSON format enclosed in a Markdown code block like \`\`\`json... \`\`\`. Provide the non-technical summary and roadmap in plain text.`;
   }
 
   async summarizeCode(extractedCode: ExtractedCode): Promise<{ technicalSummary: CodeSummary; nonTechnicalSummary: string }> {
@@ -107,7 +119,9 @@ Provide the technical summary in JSON format enclosed in a Markdown code block l
               gettingStarted: '',
               mainFiles: [],
               complexity: 'Low',
-              estimatedReadingTime: 'Unknown'
+              estimatedReadingTime: 'Unknown',
+              futureScope: 'No future scope provided.',
+              roadmap: []
             },
             nonTechnicalSummary: 'An error occurred with the AI response. Please try again.'
           };
@@ -124,7 +138,9 @@ Provide the technical summary in JSON format enclosed in a Markdown code block l
             gettingStarted: '',
             mainFiles: [],
             complexity: 'Low',
-            estimatedReadingTime: 'Unknown'
+            estimatedReadingTime: 'Unknown',
+            futureScope: 'No future scope provided.',
+            roadmap: []
           },
           nonTechnicalSummary: 'An error occurred with the AI response. Please try again.'
         };
@@ -142,7 +158,9 @@ Provide the technical summary in JSON format enclosed in a Markdown code block l
           gettingStarted: '',
           mainFiles: [],
           complexity: 'Low',
-          estimatedReadingTime: 'Unknown'
+          estimatedReadingTime: 'Unknown',
+          futureScope: 'No future scope provided.',
+          roadmap: []
         },
         nonTechnicalSummary: 'Unable to generate non-technical summary due to a service error.'
       };

@@ -57,4 +57,6 @@ export interface CodeSummary {
   mainFiles: string[];
   complexity: 'Low' | 'Medium' | 'High';
   estimatedReadingTime: string;
+  futureScope: string;
+  roadmap: { step: string; description: string }[];
 }
